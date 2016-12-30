@@ -1,12 +1,14 @@
 var PhaserGame = {
 
+  mode: null,
   airconsole: null,
   teams: null,
   phaser: null,
 
-  init: function(airconsole, teams) {
+  init: function(airconsole, teams, mode) {
     this.airconsole = airconsole;
     this.teams = teams;
+    this.mode = mode;
     this.phaser = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'phaser-container', {
       preload: this.preload.bind(this),
       create: this.create.bind(this),

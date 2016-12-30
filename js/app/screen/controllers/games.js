@@ -1,12 +1,12 @@
-App.controllers.controller('GamesCtrl', ['$scope', '$location', 'ViewService', 'TeamService', 'PlayerService', 'AirConsoleService',
-  function ($scope, $location, ViewService, TeamService, PlayerService, AirConsoleService) {
+App.controllers.controller('GamesCtrl', ['$scope', '$location', 'ViewService', 'TeamService', 'PlayerService', 'AirConsoleService', 'GameModesService'
+  function ($scope, $location, ViewService, TeamService, PlayerService, AirConsoleService, GameModesService) {
 
   var airconsole = AirConsoleService.airconsole;
   var event_on_player_input = null;
   var event_on_player_disconnects = null;
 
   $scope.init = function() {
-    PhaserGame.init(airconsole, TeamService.getTeamsWithPlayers());
+    PhaserGame.init(airconsole, TeamService.getTeamsWithPlayers(), GameModesService.getSelectedMode());
 
     event_on_player_input = airconsole.on(AirConsoleService.Event.GameInput, function(device_id, params) {
       var player = PlayerService.getPlayer(device_id);
