@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Polyracer</title>
+  <title>AirConsole Screen</title>
   <link href='https://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles/shared.css">
   <link rel="stylesheet" type="text/css" href="styles/screen.css">
@@ -11,7 +11,8 @@
 
   <div ng-controller="MainCtrl" ng-init="init()" ng-view></div>
 
-  <script type="text/javascript" src="//www.airconsole.com/api/airconsole-1.6.0.js"></script>
+  <!-- LIBS -->
+  <script type="text/javascript" src="//www.airconsole.com/api/airconsole-latest.js"></script>
   <script type="text/javascript" src="js/libs/airconsole-events/airconsole-events.js"></script>
   <script type="text/javascript" src="js/libs/angular.min.js"></script>
   <script type="text/javascript" src="js/libs/angular.route.min.js"></script>
@@ -31,7 +32,7 @@
   <script type="text/javascript" src="js/app/screen/controllers/modes.js"></script>
   <script type="text/javascript" src="js/app/screen/controllers/teams.js"></script>
   <script type="text/javascript" src="js/app/screen/controllers/games.js"></script>
-  <!-- CTRLS -->
+  <!-- Game specific -->
   <script type="text/javascript" src="js/game/phaser_game.js"></script>
 </body>
 </html>
