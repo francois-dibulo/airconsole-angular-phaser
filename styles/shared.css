@@ -1,0 +1,21 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #1F1F1F;
+  color: #FFFFFF;
+  overflow: hidden;
+  font-family: 'Play', sans-serif;
+  margin: 0;
+  padding: 0;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.full_height {
+  height: 100%;
+  overflow: hidden;
+}

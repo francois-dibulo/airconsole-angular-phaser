@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Polyracer</title>
+  <link href='https://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="styles/shared.css">
+  <link rel="stylesheet" type="text/css" href="styles/screen.css">
+</head>
+<body ng-app="app">
+
+  <div ng-controller="MainCtrl" ng-init="init()" ng-view></div>
+
+  <script type="text/javascript" src="//www.airconsole.com/api/airconsole-1.6.0.js"></script>
+  <script type="text/javascript" src="js/libs/airconsole-events/airconsole-events.js"></script>
+  <script type="text/javascript" src="js/libs/angular.min.js"></script>
+  <script type="text/javascript" src="js/libs/angular.route.min.js"></script>
+  <script type="text/javascript" src="js/libs/lodash.js"></script>
+  <script type="text/javascript" src="js/libs/phaser.min.js"></script>
+  <!-- APP -->
+  <script type="text/javascript" src="js/app/shared/shared_app.js"></script>
+  <script type="text/javascript" src="js/app/screen/app.js"></script>
+  <!-- SERVICES -->
+  <script type="text/javascript" src="js/app/shared/models/airconsole.js"></script>
+  <script type="text/javascript" src="js/app/shared/models/view_service.js"></script>
+  <script type="text/javascript" src="js/app/shared/models/game_modes_service.js"></script>
+  <script type="text/javascript" src="js/app/shared/models/team_service.js"></script>
+  <script type="text/javascript" src="js/app/shared/models/player_service.js"></script>
+  <!-- CTRLS -->
+  <script type="text/javascript" src="js/app/screen/controllers/main.js"></script>
+  <script type="text/javascript" src="js/app/screen/controllers/modes.js"></script>
+  <script type="text/javascript" src="js/app/screen/controllers/teams.js"></script>
+  <script type="text/javascript" src="js/app/screen/controllers/games.js"></script>
+  <!-- CTRLS -->
+  <script type="text/javascript" src="js/game/phaser_game.js"></script>
+</body>
+</html>

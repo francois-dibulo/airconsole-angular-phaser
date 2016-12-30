@@ -1,0 +1,14 @@
+<div ng-init="init()">
+
+  <div class="top_bar">GAME OVER</div>
+
+  <span ng-show="player.is_master">
+    <div class="footer_bar">
+      <div class="btn_full_width" nd-touch="goToModeSelection()">CONTINUE TO MODE SELECTION</div>
+    </div>
+  </span>
+
+  <span ng-show="!player.is_master">
+  </span>
+
+</div>

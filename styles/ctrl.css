@@ -1,0 +1,55 @@
+.top_bar, .footer_bar {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #000000;
+  overflow: hidden;
+  padding: 10px 10px;
+}
+
+.footer_bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+/*
+  BUTTONS
+*/
+
+.btn_container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.btn {
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  background-color: #555555;
+}
+
+.btn_left {
+  float: left;
+}
+
+.btn_right {
+  float: right;
+}
+
+.btn_caption {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn_full_width {
+  cursor: pointer;
+  text-align: center;
+  background-color: #47C12D;
+}
+
+

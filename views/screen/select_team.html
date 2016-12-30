@@ -1,0 +1,13 @@
+<div ng-init="init()">
+  <h2>Select a team</h2>
+  <ul>
+    <li ng-repeat="team in teams" class="team_item">
+      <span ng-style="{ color: team.color }">{{ team.name }}</span>
+      <ul>
+        <li ng-repeat="player in team.players">
+          {{ player.name }} | {{ player.device_id }}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

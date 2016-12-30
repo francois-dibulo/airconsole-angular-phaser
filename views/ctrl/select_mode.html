@@ -1,0 +1,22 @@
+<div ng-init="init()" class="full_height">
+
+  <span ng-show="player.is_master">
+    <div class="top_bar">SELECT A MODE</div>
+
+    <div class="btn_container">
+      <div nd-touch="prevMode()" class="btn_left btn">
+        <div class="btn_caption">&lt;</div>
+      </div>
+      <div nd-touch="nextMode()" class="btn_right btn">
+        <div class="btn_caption">&gt;</div>
+      </div>
+    </div>
+
+    <div class="footer_bar btn_full_width" nd-touch="selectMode()">Select mode</div>
+  </span>
+
+  <div ng-hide="player.is_master">
+    Wait for mode selection
+  </div>
+
+</span>

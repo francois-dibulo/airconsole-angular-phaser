@@ -1,0 +1,9 @@
+<div ng-init="init()">
+  <h2>Select mode and stuff</h2>
+
+  <ul>
+    <li ng-repeat="mode in modes" class="mode" ng-class="{ selected: isSelectedMode($index) }">
+      {{ mode.name }}
+    </li>
+  </ul>
+</div>
