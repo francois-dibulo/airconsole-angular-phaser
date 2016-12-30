@@ -7,7 +7,7 @@ var PhaserGame = {
   init: function(airconsole, teams) {
     this.airconsole = airconsole;
     this.teams = teams;
-    this.phaser = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-container', {
+    this.phaser = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'phaser-container', {
       preload: this.preload.bind(this),
       create: this.create.bind(this),
       update: this.update.bind(this),
@@ -25,14 +25,17 @@ var PhaserGame = {
   },
 
   create: function () {
-    this.phaser.world.setBounds(0, 0, 1000, 1000);
+    this.phaser.physics.startSystem(Phaser.Physics.ARCADE);
+    //this.phaser.physics.arcade.gravity.y = 100;
 
     // Scale
-    var scale_manager = new Phaser.ScaleManager(this.phaser, 1000, 1000);
+    var scale_manager = new Phaser.ScaleManager(this.phaser, window.innerWidth, window.innerHeight);
     scale_manager.scaleMode = Phaser.ScaleManager.RESIZE;
     scale_manager.pageAlignVertically = true;
     scale_manager.pageAlignHorizontally = true;
     scale_manager.refresh();
+
+    this.buildPlayers();
   },
 
   update: function () {
@@ -43,11 +46,36 @@ var PhaserGame = {
 
   },
 
+  // =====================================================================================
+  // PLAYERS
+  // =====================================================================================
+
+  buildPlayers: function() {
+    var teams = this.teams;
+    for (var i = 0; i < this.teams.length; i++) {
+      var players = this.teams[i].players;
+      for (var p = 0; p < players.length; p++) {
+        var player = players[p];
+        var opts = {
+          color: player.color
+        };
+        player.unit = new Unit(p, this.phaser, opts);
+      }
+    }
+  },
+
   onPlayerLeft: function(player, params) {
 
   },
 
   onPlayerInput: function(player, params) {
     console.info("Ctrl input", player, params);
+    if (player.unit) {
+      if (params.action === "jump") {
+        player.unit.jump(true);
+      } else if (params.action === "fall") {
+        player.unit.jump(false);
+      }
+    }
   }
 };

@@ -22,7 +22,7 @@ App.services.factory('PlayerService', ['AirConsoleService', function (AirConsole
         if (this.getPlayerByDeviceId(device_id) !== null) return;
         var player = {
           device_id: device_id,
-          color: '#000000',
+          color: 0x37b2ff,
           stats: {},
           team_index: null,
           name: airconsole.getNickname(device_id),

@@ -1,0 +1,68 @@
+<!--
+  This file simply mocks the airconsole environment so that building the game is faster
+  and can be done without AirConsole or Angular.
+  It should basically include the same code as js/app/screen/controllers/games.js
+ -->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Standalone Game</title>
+  <link rel="stylesheet" type="text/css" href="styles/shared.css">
+  <link rel="stylesheet" type="text/css" href="styles/screen.css">
+</head>
+<body>
+
+  <div id="phaser-container"></div>
+
+  <!-- LIBS -->
+  <script type="text/javascript" src="//www.airconsole.com/api/airconsole-latest.js"></script>
+  <script type="text/javascript" src="js/libs/airconsole-events/airconsole-events.js"></script>
+  <script type="text/javascript" src="js/libs/lodash.js"></script>
+  <script type="text/javascript" src="js/libs/lodash_ext.js"></script>
+  <script type="text/javascript" src="js/libs/phaser.min.js"></script>
+  <!-- Game specific -->
+  <script type="text/javascript" src="js/game/phaser_game.js"></script>
+  <script type="text/javascript" src="js/game/models/unit.js"></script>
+  <script type="text/javascript">
+    var airconsole = new AirConsole();
+    // Create example team and players
+
+    var player_1 = {
+      name: "Guest 1",
+      color: 0x37b2ff,
+      device_id: 1,
+      stats: {}
+    };
+    var player_2 = {
+      name: "Guest 2",
+      color: 0xafff37,
+      device_id: 2,
+      stats: {}
+    };
+
+    var teams = [
+      {
+        name: "Team 1",
+        color: "#00ff00",
+        score: [],
+        players: [player_1, player_2]
+      }
+    ];
+
+    PhaserGame.init(airconsole, teams);
+
+    window.document.addEventListener('mousedown', function() {
+      PhaserGame.onPlayerInput(player_1, {
+        action: 'jump'
+      })
+    });
+
+    window.document.addEventListener('mouseup', function() {
+      PhaserGame.onPlayerInput(player_1, {
+        action: 'fall'
+      })
+    });
+  </script>
+</body>
+</html>

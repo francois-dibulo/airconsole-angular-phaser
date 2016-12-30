@@ -7,8 +7,9 @@ App.controllers.controller('GamesCtrl', ['$scope', '$location', 'ViewService', '
     ViewService.ctrl.go('game_over', true);
   };
 
-  $scope.jump = function() {
-    AirConsoleService.airconsole.sendEvent(AirConsole.SCREEN, AirConsoleService.Event.GameInput, { action: 'jump' });
+  $scope.jump = function(state) {
+    var action = state === true ? 'jump' : 'fall';
+    AirConsoleService.airconsole.sendEvent(AirConsole.SCREEN, AirConsoleService.Event.GameInput, { action: action });
   };
 
   $scope.goToModeSelection = function() {
