@@ -10,10 +10,22 @@
   <title>Standalone Game</title>
   <link rel="stylesheet" type="text/css" href="styles/shared.css">
   <link rel="stylesheet" type="text/css" href="styles/screen.css">
+  <style type="text/css">
+    #input-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
 
   <div id="phaser-container"></div>
+  <div id="input-container"></div>
 
   <!-- LIBS -->
   <script type="text/javascript" src="//www.airconsole.com/api/airconsole-latest.js"></script>
@@ -26,8 +38,9 @@
   <script type="text/javascript" src="js/game/models/unit.js"></script>
   <script type="text/javascript">
     var airconsole = new AirConsole();
-    // Create example team and players
+    var input_element = document.getElementById('input-container');
 
+    // Create example team and players
     var player_1 = {
       name: "Guest 1",
       color: "#37b2ff",
@@ -52,16 +65,16 @@
 
     PhaserGame.init(airconsole, teams);
 
-    window.document.addEventListener('mousedown', function() {
+    input_element.addEventListener('mousedown', function() {
       PhaserGame.onPlayerInput(player_1, {
         action: 'jump'
-      })
-    });
+      });
+    }, true);
 
-    window.document.addEventListener('mouseup', function() {
+    input_element.addEventListener('mouseup', function() {
       PhaserGame.onPlayerInput(player_1, {
         action: 'fall'
-      })
+      });
     });
   </script>
 </body>
