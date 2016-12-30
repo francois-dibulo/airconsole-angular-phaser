@@ -6,7 +6,8 @@ App.services.factory('AirConsoleService', [function () {
       Connect: 'connect',
       Disconnect: 'disconnect',
       DeviceStateChange: 'device_state_change',
-      GameInput: 'game_input_event'
+      GameInput: 'game_input_event',
+      SetPlayer: 'set_player'
     },
 
     onReady: function() {},

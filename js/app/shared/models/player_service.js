@@ -11,6 +11,15 @@ App.services.factory('PlayerService', ['AirConsoleService', function (AirConsole
   // ======================================================
   var airconsole = AirConsoleService.airconsole;
 
+  var player_colors = ['#77bbff', '#ff9900', '#99ee00', '#f4359e',
+                      '#651067', '#b82e2e', '#329262', '#9c5935',
+                      '#3b3eee', '#fb9a99', '#ccbb22', '#cab2d6',
+                      '#aaffaa', '#b91383', '#008800', '#660000',
+                      '#ff0000', '#ffff00', '#00ff00', '#0000ff',
+                      '#743411', '#111177', '#b77322', '#66aa00',
+                      '#00aac6', '#a9c413', '#9e8400', '#5574a6',
+                      '#777777', '#999999', '#bbbbbb', '#eeeeee'];
+
   service.init = function() {
 
     // ======================================================
@@ -18,11 +27,19 @@ App.services.factory('PlayerService', ['AirConsoleService', function (AirConsole
     // ======================================================
     if (AirConsoleService.isScreen()) {
 
+      var player_map_key = 'player_map_key';
+
+      service.updatePlayersMap = function() {
+        airconsole.setCustomDeviceStateProperty(player_map_key, this.players_map);
+      };
+      service.updatePlayersMap();
+
       service.addPlayer = function(device_id) {
         if (this.getPlayerByDeviceId(device_id) !== null) return;
+        var color = player_colors[device_id] || player_colors[0];
         var player = {
           device_id: device_id,
-          color: 0x37b2ff,
+          color: color,
           stats: {},
           team_index: null,
           name: airconsole.getNickname(device_id),
@@ -30,6 +47,10 @@ App.services.factory('PlayerService', ['AirConsoleService', function (AirConsole
         };
         this.players.push(player);
         this.players_map[device_id] = player;
+        this.updatePlayersMap();
+        // airconsole.sendEvent(device_id, AirConsoleService.Event.SetPlayer, {
+        //   color: color
+        // });
       };
 
       service.removePlayer = function(device_id) {

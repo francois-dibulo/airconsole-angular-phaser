@@ -8,9 +8,9 @@
   <link rel="stylesheet" type="text/css" href="styles/shared.css">
   <link rel="stylesheet" type="text/css" href="styles/ctrl.css">
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-controller="MainCtrl" ng-init="init()">
 
-  <div ng-controller="MainCtrl" ng-init="init()" class="full_height" ng-view></div>
+  <div class="full_height" ng-view></div>
 
   <script type="text/javascript" src="//www.airconsole.com/api/airconsole-latest.js"></script>
   <script type="text/javascript" src="js/libs/airconsole-events/airconsole-events.js"></script>

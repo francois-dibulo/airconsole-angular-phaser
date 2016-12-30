@@ -57,7 +57,7 @@ var PhaserGame = {
       for (var p = 0; p < players.length; p++) {
         var player = players[p];
         var opts = {
-          color: player.color
+          color: parseInt(player.color.substr(1), 16)
         };
         player.unit = new Unit(p, this.phaser, opts);
       }

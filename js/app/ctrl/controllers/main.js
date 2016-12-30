@@ -36,6 +36,16 @@ App.controllers.controller('MainCtrl', ['$scope', '$location', '$http', 'AirCons
       };
     };
 
+    $scope.airconsole.on(AirConsoleService.Event.DeviceStateChange, function(device_id, custom_data) {
+      var ctrl_device_id = $scope.airconsole.getDeviceId();
+      if (custom_data && device_id === AirConsole.SCREEN) {
+        if (custom_data['player_map_key'] && custom_data['player_map_key'][ctrl_device_id]) {
+          $scope.player = custom_data['player_map_key'][ctrl_device_id];
+          setMasterPlayer();
+        }
+      }
+    });
+
     $scope.airconsole.on(AirConsoleService.Event.Connect, function(device_id, params) {
       setMasterPlayer();
     });
