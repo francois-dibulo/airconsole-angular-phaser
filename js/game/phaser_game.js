@@ -1,9 +1,11 @@
 var PhaserGame = {
 
+  airconsole: null,
   teams: null,
   phaser: null,
 
-  init: function(teams) {
+  init: function(airconsole, teams) {
+    this.airconsole = airconsole;
     this.teams = teams;
     this.phaser = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-container', {
       preload: this.preload.bind(this),
@@ -11,7 +13,6 @@ var PhaserGame = {
       update: this.update.bind(this),
       render: this.render.bind(this)
     });
-    console.log(this);
   },
 
   destroy: function() {
@@ -39,6 +40,10 @@ var PhaserGame = {
   },
 
   render: function () {
+
+  },
+
+  onPlayerLeft: function(player, params) {
 
   },
 

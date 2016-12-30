@@ -1,15 +1,24 @@
 App.controllers.controller('GamesCtrl', ['$scope', '$location', 'ViewService', 'TeamService', 'PlayerService', 'AirConsoleService',
   function ($scope, $location, ViewService, TeamService, PlayerService, AirConsoleService) {
 
+  var airconsole = AirConsoleService.airconsole;
   var event_on_player_input = null;
+  var event_on_player_disconnects = null;
 
   $scope.init = function() {
-    PhaserGame.init(TeamService.getTeamsWithPlayers());
+    PhaserGame.init(airconsole, TeamService.getTeamsWithPlayers());
 
-    event_on_player_input = $scope.airconsole.on(AirConsoleService.Event.GameInput, function(device_id, params) {
+    event_on_player_input = airconsole.on(AirConsoleService.Event.GameInput, function(device_id, params) {
       var player = PlayerService.getPlayer(device_id);
       if (player) {
         PhaserGame.onPlayerInput(player, params);
+      }
+    });
+
+    event_on_player_disconnects = airconsole.on(AirConsoleService.Event.Disconnect, function(device_id, params) {
+      var player = PlayerService.getPlayer(device_id);
+      if (player) {
+        PhaserGame.onPlayerLeft(player, params);
       }
     });
   };
@@ -19,7 +28,8 @@ App.controllers.controller('GamesCtrl', ['$scope', '$location', 'ViewService', '
   };
 
   $scope.$on("$destroy", function() {
-    $scope.airconsole.off(event_on_player_input);
+    airconsole.off(event_on_player_input);
+    airconsole.off(event_on_player_disconnects);
     PhaserGame.destroy();
   });
 
