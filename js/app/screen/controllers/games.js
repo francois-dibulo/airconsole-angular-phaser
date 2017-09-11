@@ -1,4 +1,4 @@
-App.controllers.controller('GamesCtrl', ['$scope', '$location', 'ViewService', 'TeamService', 'PlayerService', 'AirConsoleService', 'GameModesService'
+App.controllers.controller('GamesCtrl', ['$scope', '$location', 'ViewService', 'TeamService', 'PlayerService', 'AirConsoleService', 'GameModesService',
   function ($scope, $location, ViewService, TeamService, PlayerService, AirConsoleService, GameModesService) {
 
   var airconsole = AirConsoleService.airconsole;
